@@ -1,0 +1,65 @@
+
+.container_home {
+    background-image: url(https://e1.pxfuel.com/desktop-wallpaper/973/341/desktop-wallpaper-satoshi-pokemon-landscape.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.card {
+    flex: 0 0 calc(33.33% - 10px);
+}
+
+.container_filters {
+    padding-left: 20px;
+}
+
+.filter {
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 2px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.select {
+    height: 10px;
+    padding: 18px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.refresh {
+    height: 10px;
+    padding: 18px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.container_button {
+    margin: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+  

@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300&family=Lato:wght@300&family=Rubik&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container_card {
+    background-color: yellow;
+    width: 350px;
+    height: auto;
+    margin: 10%;
+    padding: 10px;
+    border-radius: 10px;
+}
+.card_image {
+    text-align: center;
+    background: linear-gradient(to right, rgb(94, 112, 14), rgb(153, 153, 41));
+    border-radius: 10px 10px 0 0;
+}
+
+.img_img{
+    width: 200px;
+    height: 200px;
+}
+
+.card_info {
+    text-decoration: none;
+    background-color: rgb(219, 199, 106);
+    padding: 10px;
+}
+
+.card_name {
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    color: black;
+}
+
+.types {
+    background-color: black;
+    color: white;
+    padding: 6px;
+    width: 20%;
+    border-radius: 5px;
+    text-align: center;
+}
