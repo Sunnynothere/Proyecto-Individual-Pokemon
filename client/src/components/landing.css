@@ -26,4 +26,22 @@
     display: flex;
     justify-content: flex-end;
     padding: 40px;
+    margin-top: 10rem;
+}
+
+@media (max-width: 768px) {
+    .container_landing {
+        height: 100vh;
+        width: 100%;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .title_landing img {
+        max-width: 100%;
+    }
+
+    .button_landing {
+        justify-content: center;
+    }
 }

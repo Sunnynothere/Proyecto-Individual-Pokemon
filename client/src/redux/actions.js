@@ -9,7 +9,7 @@ export const FILTER_BY_API_DB = 'FILTER_BY_API_DB';
 export const ORDER_BY_NAME = 'ORDER_BY_NAME';
 export const ORDER_BY_ATTACK = 'ORDER_BY_ATTACK';
 export const POST_POKEMON = 'POST_POKEMON';
-export const LOCAL_HOST = 'http://localhost:3001';
+export const LOCAL_HOST = 'http://localhost:3005';
 
 export const allPokemon = () => {
     return async(dispatch) => {

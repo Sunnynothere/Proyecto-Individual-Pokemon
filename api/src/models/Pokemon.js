@@ -52,12 +52,6 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
 
-    pais: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      defaultValue: 'Mexico',
-    },
-
     createdDb: {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
