@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
 import { postPokemon, getTypes } from '../redux/actions';
 import Validation from './Validation';
 import './form.css';
@@ -39,28 +40,65 @@ const Form = () => {
     };
 
     function handleSelect(e) {
+        const selectedType = e.target.value;
+
+        if (!input.type.includes(selectedType)) {
+            setInput({
+                ...input,
+                type: [...input.type, selectedType],
+            });
+        }
+    };
+
+    function handleClearType() {
         setInput({
             ...input,
-            type: [...input.type, e.target.value],
+            type: [],
         });
     };
 
     function handleSubmit(e) {
         e.preventDefault();
-        dispatch(postPokemon(input));
-        alert('Pokemon created');
-        setInput({
-            name: '',
-            image: '',
-            hp: '',
-            attack: '',
-            defense: '',
-            speed: '',
-            height: '',
-            weight: '',
-            type: [],
+        dispatch(postPokemon(input))
+            .then((response) => {
+                if(response && response.status === 201) {
+                    Swal.fire({
+                        title: 'Pokemon created successfully!',
+                        background: 'white',
+                        width: '20%',
+                    });
+                } else{
+                    Swal.fire({
+                        title: 'Missing data!',
+                        background: 'white',
+                        width: '20%',
+                        icon: 'warning',
+                    });
+                };
+            })
+            .then(() => {
+                setInput({
+                    name: '',
+                    image: '',
+                    hp: '',
+                    attack: '',
+                    defense: '',
+                    speed: '',
+                    height: '',
+                    weight: '',
+                    type: [],
+                });
+            })
+        .catch((error) => {
+            console.error('Error al crear el Pokémon:', error);
+            Swal.fire({
+                title: 'Failed to create Pokemon!',
+                background: 'white',
+                width: '20%',
+                icon: 'error',
+            });
         });
-    };
+    } 
 
     return(
         <div className='container_form'>
@@ -89,7 +127,7 @@ const Form = () => {
 
                     <div className='info_form column'>
                         <div className='info_form'>
-                            <label>Hp</label>
+                            <label>HP</label>
                             <input type='number' name='hp'
                             value={input.hp}
                             onChange={handleChange} />
@@ -141,27 +179,32 @@ const Form = () => {
 
                     <div className='info_form'>
                         <label>Types</label>
-                        <select onChange={(e) => handleSelect(e)}>
+                        <select onChange={(e) => handleSelect(e)} className='select'>
                             {types.map((type) => (
                                 <option key={type} value={type}>
                                     {type}
                                 </option>
                             ))}
                         </select>
+                        <button type='button' onClick={handleClearType} className='button_form clear'>Clear</button>
                     </div>
                     <div className='selected'>
-                        <ul>
-                            <li>{input.type.map(type => (type + ' '))}</li>
-                        </ul>
+                        
+                            {input.type.map((type) => (
+                                <p className='selected type'>
+                                    {type}
+                                </p>
+                            ))}
+                        
                     </div>
 
-                    <button className='submit_form' type='submit'>
+                    <button className='button_form' type='submit'>
                         Create pokemon
                     </button>
                 </form>
                 <div className='back_home'>
                     <Link to='/home'>
-                        <button>Back home</button>
+                        <button className='button_form'>Back home</button>
                     </Link>
                 </div>
             </div>

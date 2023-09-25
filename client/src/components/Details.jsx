@@ -33,13 +33,12 @@ const Details = () => {
 
 
                     <div className='info'>
-                        <h3>hp: {detailsPokemon.hp}</h3>
+                        <h3>HP: {detailsPokemon.hp}</h3>
                         <h3>Attack: {detailsPokemon.attack}</h3>
                         <h3>Defense: {detailsPokemon.defense}</h3>
                         <h3>Speed: {detailsPokemon.speed ? detailsPokemon.speed : 'Does not have speed'}</h3>
                         <h3>Height: {detailsPokemon.height ? detailsPokemon.height : 'Does not have height'}</h3>
                         <h3>Weight: {detailsPokemon.weight ? detailsPokemon.weight : 'Does not have weight'}</h3>
-                        <h3>Pais: {detailsPokemon.pais ? detailsPokemon.pais : 'Pais does not exist'}</h3>
                     </div>
 
                     <Link to='/home'>

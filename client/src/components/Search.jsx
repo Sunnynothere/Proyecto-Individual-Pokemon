@@ -8,7 +8,6 @@ const Search = () => {
     const dispatch = useDispatch();
     const [input, setInput] = useState('');
 
-
     function handleChange(e){
         e.preventDefault();
         setInput(e.target.value);

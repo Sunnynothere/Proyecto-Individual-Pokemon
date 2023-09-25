@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { CiCircleMore } from 'react-icons/ci';
 import { Link } from 'react-router-dom';
 import { allPokemon, filterByType, orderByName, orderByAttack, getTypes, filterByApiDb } from '../redux/actions';
 import Nav from './Nav';
@@ -17,6 +18,7 @@ const Home = () => {
 
     const [order, setOrder] = useState('');
 
+    const [sidebarVisible, setSidebarVisible] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const [pokemonPerPage, setPokemonPerPage] = useState(12);
 
@@ -63,6 +65,10 @@ const Home = () => {
     function handleFilterCreated(e) {
         dispatch(filterByApiDb(e.target.value));
     };
+   
+    function toggleSideBar() {
+        setSidebarVisible(!sidebarVisible);
+    };
 
     return(
         <div className='container_home'>
@@ -70,55 +76,73 @@ const Home = () => {
                 <Nav />
             </div>
 
-            <div className='container_filters'>
-                <div className='filters'>
-                    <label className='filter'>Order by name</label>
-                    <select className='select' onChange={e => handleOrderByName(e)}
-                    name='alpha'>
-                        <option disabled defaultValue>Alphabetical</option>
-                        <option value='a-z'>A-Z</option>
-                        <option value='z-a'>Z-A</option>
-                    </select>
+            <button className='sidebar_open' onClick={toggleSideBar}  style={{ position: 'absolute', top: '8rem', left: '1.5rem' }}>
+                <CiCircleMore />
+            </button>
 
-                    <label className='filter'>Order by attack</label>
-                    <select className='select' name='attack' onChange={e => handleOrderByAttack(e)}>
-                        <option disabled defaultValue>Attack</option>
-                        <option value='min'>min-max</option>
-                        <option value='max'>max-min</option>
-                    </select>
+            {sidebarVisible && (
+                    <div className='responsive_sidebar active'>
+                    <button className='sidebar_open' onClick={toggleSideBar} style={{ position: 'absolute', top: '3.5px' }}>
+                        <CiCircleMore />
+                    </button>
+                    <div className='container_filters'>
+                        <div className='filters'>
+                        <label className='filter'>Order by name</label>
+                        <select
+                            className='select'
+                            onChange={e => handleOrderByName(e)}
+                            name='alpha'
+                        >
+                            <option disabled defaultValue>Alphabetical</option>
+                            <option value='a-z'>A-Z</option>
+                            <option value='z-a'>Z-A</option>
+                        </select>
 
-                    <label className='filter'>Filter by type</label>
-                    <select className='select' name='type' onChange={e => handleFilterByType(e)}>
-                        <option value=''>All types</option>
+                        <label className='filter'>Order by attack</label>
+                        <select
+                            className='select'
+                            name='attack'
+                            onChange={e => handleOrderByAttack(e)}
+                        >
+                            <option disabled defaultValue>Attack</option>
+                            <option value='min'>min-max</option>
+                            <option value='max'>max-min</option>
+                        </select>
+
+                        <label className='filter'>Filter by type</label>
+                        <select
+                            className='select'
+                            name='type'
+                            onChange={e => handleFilterByType(e)}
+                        >
+                            <option value=''>All types</option>
                             {types.map((type, index) => (
                             <option key={index} value={type}>
-                                    {type}
+                                {type}
                             </option>
-                        ))}
-                    </select>
+                            ))}
+                        </select>
 
-                    <label className='filter'>Filter api or database</label>
-                    <select className='select' name='created' onChange={e => handleFilterCreated(e)}>
-                        <option value='all'>Show all</option>
-                        <option value='api'>Api</option>
-                        <option value='created'>Database</option>
-                    </select>
+                        <label className='filter'>Filter api or database</label>
+                        <select
+                            className='select'
+                            name='created'
+                            onChange={e => handleFilterCreated(e)}
+                        >
+                            <option value='all'>Show all</option>
+                            <option value='api'>Api</option>
+                            <option value='created'>Database</option>
+                        </select>
 
-                    <div className='container_button'>
-                        <button className='refresh' onClick={handleClick}>
+                        <div className='container_button'>
+                            <button className='refresh' onClick={handleClick}>
                             Refresh
-                        </button>
+                            </button>
+                        </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <div className='paginado_home'>
-                <Paginado pokemonPerPage={pokemonPerPage}
-                allPokemon={pokemon.length}
-                pagination={pagination}
-                currentPokemon={currentPokemon}
-                currentPage = {currentPage} />
-            </div>
+                    </div>
+                )}
 
             <div className='cards'>
                 {currentPokemon?.map((e) => {
@@ -133,6 +157,16 @@ const Home = () => {
                     )
                 })}
             </div>
+
+            
+            <div className='paginado_home'>
+                <Paginado pokemonPerPage={pokemonPerPage}
+                allPokemon={pokemon.length}
+                pagination={pagination}
+                currentPokemon={currentPokemon}
+                currentPage = {currentPage} />
+            </div>
+            
         </div>
     )
 };

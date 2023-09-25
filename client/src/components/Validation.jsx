@@ -30,6 +30,12 @@ const Validation = (input) => {
         error.weight = 'Weight is required';
     };
 
+    if (input.type.length === 0) {
+        error.type = 'You must select at least one type';
+    } else if (new Set(input.type).size !== input.type.length) {
+        error.type = 'Types cannot be repeated';
+    }
+
     return error;
 };
 

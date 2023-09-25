@@ -11,10 +11,11 @@
     background-color: yellow;
     width: 350px;
     height: auto;
-    margin: 10%;
+    margin: 20px auto;
     padding: 10px;
     border-radius: 10px;
 }
+
 .card_image {
     text-align: center;
     background: linear-gradient(to right, rgb(94, 112, 14), rgb(153, 153, 41));

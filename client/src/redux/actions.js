@@ -105,11 +105,11 @@ export const postPokemon = (payload) => {
           type: POST_POKEMON,
           payload: response.data,
         });
-        alert('Pokemon created successfully');
+        // alert('Pokemon created successfully');
         dispatch(allPokemon());
         return response.data;
       } catch (error) {
-        alert('Failed to create pokemon');
+        // alert('Failed to create pokemon');
         console.log(error);
       }
     };

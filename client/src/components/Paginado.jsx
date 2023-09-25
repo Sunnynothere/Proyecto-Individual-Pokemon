@@ -10,19 +10,19 @@ const Paginado = ({allPokemon, pokemonPerPage, pagination, currentPage}) => {
     };
 
     return(
-        <nav>
-            <div className='container_paginado'>
+        <div>
+            <nav className='container_paginado'>
                 <ul className='list'>
                     {pageNum?.map((pageNum) => (
                         <li className='page' key={pageNum}>
-                            <button onClick={() => pagination(pageNum)}>
+                            <button onClick={() => pagination(pageNum)} className='numbers'>
                                 {pageNum}
                             </button>
                         </li>
                     ))}
                 </ul>
-            </div>
-        </nav>
+            </nav>
+        </div>
     )
 };
 
