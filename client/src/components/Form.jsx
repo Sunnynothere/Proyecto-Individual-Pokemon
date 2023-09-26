@@ -57,100 +57,83 @@ const Form = () => {
         });
     };
 
+
     function handleSubmit(e) {
         e.preventDefault();
+        alert('Pokemon created succesfully');
         dispatch(postPokemon(input))
-            .then((response) => {
-                if(response && response.status === 201) {
-                    Swal.fire({
-                        title: 'Pokemon created successfully!',
-                        background: 'white',
-                        width: '20%',
-                    });
-                } else{
-                    Swal.fire({
-                        title: 'Missing data!',
-                        background: 'white',
-                        width: '20%',
-                        icon: 'warning',
-                    });
-                };
-            })
-            .then(() => {
-                setInput({
-                    name: '',
-                    image: '',
-                    hp: '',
-                    attack: '',
-                    defense: '',
-                    speed: '',
-                    height: '',
-                    weight: '',
-                    type: [],
-                });
-            })
-        .catch((error) => {
-            console.error('Error al crear el Pokémon:', error);
-            Swal.fire({
-                title: 'Failed to create Pokemon!',
-                background: 'white',
-                width: '20%',
-                icon: 'error',
+              setInput({
+                name: '',
+                image: '',
+                hp: '',
+                attack: '',
+                defense: '',
+                speed: '',
+                height: '',
+                weight: '',
+                type: [],
             });
-        });
-    } 
-
+    }      
+    
     return(
         <div className='container_form'>
 
             <div className='forms'>
-                <h1 className='form_title'>Create your pokemon:</h1>
-                <form className='form' onSubmit={(e) => handleSubmit(e)}>
+                <h1 className='title_form'>Create your pokemon:</h1>
+                <form class='form' onSubmit={(e) => handleSubmit(e)}>
 
+                <div className='info_form'>
+                    <label>Name</label>
+                    <input 
+                    type='text' name='name'
+                    value={input.name}
+                    onChange={handleChange} />
+                </div>
+                {error.name && (<p className='error'>{error.name}</p>)}
+
+                <div className='info_form'>
+                    <label>Image</label>
+                    <input name='image' alt='img not found'
+                    value={input.image}
+                    title='url format'
+                    placeholder='image url'
+                    pattern='^https?://.+(jpg|jpeg|png|gif)$'
+                    onChange={handleChange} />
+                </div>
+
+                <div className='info_form column'>
                     <div className='info_form'>
-                        <label>Name</label>
-                        <input type='text' name='name'
-                        value={input.name}
-                        onChange={handleChange} />
-                    </div>
-                    {error.name && (<p className='error'>{error.name}</p>)}
-
-                    <div className='info_form'>
-                        <label>Image</label>
-                        <input name='image' alt='img not found'
-                        value={input.image}
-                        title='url format'
-                        placeholder='image url'
-                        pattern='https?:\/\/[\w\-]+(\.[\w\-]+)*[/#?]?.*$'
-                        onChange={handleChange} />
-                    </div>
-
-                    <div className='info_form column'>
-                        <div className='info_form'>
+                        <div className='container_input'>
                             <label>HP</label>
                             <input type='number' name='hp'
                             value={input.hp}
                             onChange={handleChange} />
                         </div>
                         {error.hp && (<p className='error'>{error.hp}</p>)}
+                    </div>
 
-                        <div className='info_form'>
+                    <div className='info_form'>
+                        <div className='container_input'>
                             <label>Attack</label>
                             <input type='number' name='attack'
                             value={input.attack}
                             onChange={handleChange} />
                         </div>
                         {error.attack && (<p className='error'>{error.attack}</p>)}
+                    </div>
 
-                        <div className='info_form'>
+                    <div className='info_form'>
+                        <div className='container_input'>
                             <label>Defense</label>
                             <input type='number' name='defense'
                             value={input.defense}
                             onChange={handleChange} />
                         </div>
                         {error.defense && (<p className='error'>{error.defense}</p>)}
+                    </div>
 
-                        <div className='info_form'>
+                    <div className='info_form'>
+                        <div className='container_input'>
                             <label>Speed</label>
                             <input type='number' name='speed'
                             value={input.speed}
@@ -158,17 +141,21 @@ const Form = () => {
                         </div>
                         {error.speed && (<p className='error'>{error.speed}</p>)}
                     </div>
+                </div>
 
-                    <div className='info_form column'>
-                        <div className='info_form'>
+                <div className='info_form column'>
+                    <div className='info_form'>
+                        <div className='container_input'>
                             <label>Height</label>
                             <input type='number' name='height'
                             value={input.height}
                             onChange={handleChange} />
                         </div>
                         {error.height && (<p className='error'>{error.height}</p>)}
+                    </div>
 
-                        <div className='info_form'>
+                    <div className='info_form'>
+                        <div className='container_input'>
                             <label>Weight</label>
                             <input type='number' name='weight'
                             value={input.weight}
@@ -178,37 +165,44 @@ const Form = () => {
                     </div>
 
                     <div className='info_form'>
-                        <label>Types</label>
-                        <select onChange={(e) => handleSelect(e)} className='select'>
-                            {types.map((type) => (
-                                <option key={type} value={type}>
-                                    {type}
-                                </option>
-                            ))}
-                        </select>
-                        <button type='button' onClick={handleClearType} className='button_form clear'>Clear</button>
+                        <div className='container_input'>
+                            <label>Types</label>
+                            <select onChange={(e) => handleSelect(e)} className='select'>
+                                {types.map((type) => (
+                                    <option key={type} value={type}>
+                                        {type}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
                     </div>
-                    <div className='selected'>
-                        
-                            {input.type.map((type) => (
-                                <p className='selected type'>
-                                    {type}
-                                </p>
-                            ))}
-                        
-                    </div>
+                </div>
 
+                 <div className='selected'>
+                    
+                        {input.type.map((type) => (
+                            <p className='selected type'>
+                                {type}
+                            </p>
+                        ))}
+                    
+                </div>
+
+                <div className='button_container'>
                     <button className='button_form' type='submit'>
                         Create pokemon
                     </button>
-                </form>
-                <div className='back_home'>
-                    <Link to='/home'>
-                        <button className='button_form'>Back home</button>
-                    </Link>
+
+                    <button type='button' onClick={handleClearType} className='button_form clear'>Clear</button>
                 </div>
+            </form>
+            <div className='back_home'>
+                <Link to='/home'>
+                    <button className='button_form'>Back home</button>
+                </Link>
             </div>
         </div>
+    </div>
     )
 };
 

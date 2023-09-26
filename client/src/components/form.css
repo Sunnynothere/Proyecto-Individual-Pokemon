@@ -18,22 +18,60 @@
 
 .forms {
     position: relative;
-    max-width: 700px;
+    max-width: 800px;
     width: 100%;
     padding: 20px;
     background: yellow;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    max-height: 90vh; 
+    overflow-y: auto; 
 }
 
 .form {
     text-align: center;
-    
+    margin: 0 auto;
+}
+
+.container_input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}  
+
+
+.container_input label {
+    font-size: 18px; 
+    margin-bottom: 4px; 
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.container_input input {
+    height: 40px; 
+    width: 100%; 
+    font-size: 1rem;
+    color: #707070;
+    outline: none;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.container_input input[type="number"]::-webkit-inner-spin-button,
+.container_input input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0; 
 }
 
 .info_form {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 5px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
 
 .info_form label {
@@ -44,12 +82,12 @@
 
 .info_form input {
     position: relative;
-    height: 50px;
+    height: 40px;
     width: 100%;
     min-width: 100px;
     font-size: 1rem;
     color: #707070;
-    margin-top: 8px;
+    margin-top: 6px;
     outline: none;
     border: 1px solid #ddd;
     border-radius: 6px;
@@ -59,8 +97,9 @@
 .select {
     border: none;
     outline: none;
-    margin-top: 30px;
+    margin-top: 10px;
     font-size: 14px;
+    margin-bottom: 5px;
 }
 
 .selected {
@@ -103,6 +142,13 @@
     font-size: 18px;
     margin: 10px;
     align-items: center;
+    justify-content: center;
+}
+
+.button_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }
 
 .error {
@@ -110,7 +156,8 @@
     text-align: center;
     margin: 0px;
     font-size: 10px;
-    width: 100%;
-    height: auto;
-    margin-left: 0px;
+    width: auto;
+    display: block;
+    margin-top: 5px;
 }
+  

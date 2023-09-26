@@ -20,6 +20,7 @@
     background-color: yellow;
     width: 500px;
     padding: 10px;
+    margin: 0 auto;
     border-radius: 10px;
 }
 
@@ -30,13 +31,14 @@
 }
 
 .image_detail {
-    width: 350px;
-    height: 350px;
+    width: 250px; 
+    height: 250px; 
+    margin: 0 auto; 
 }
 
 .detail_title {
     text-align: center;
-    font-size: 40px;
+    font-size: 28px; 
     padding: 10px;
     color: black;
 }
