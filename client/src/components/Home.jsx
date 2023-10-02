@@ -8,18 +8,18 @@ import Card from './Card';
 import Paginado from './Paginado';
 import './home.css';
 
-let prevId = 1;
-
 const Home = () => {
 
     const dispatch = useDispatch();
     const pokemon = useSelector((state) => state.pokemon);
     const types = useSelector((state) => state.types);
 
+    // eslint-disable-next-line
     const [order, setOrder] = useState('');
 
     const [sidebarVisible, setSidebarVisible] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
+    // eslint-disable-next-line
     const [pokemonPerPage, setPokemonPerPage] = useState(12);
 
     const indexLast = currentPage * pokemonPerPage;
