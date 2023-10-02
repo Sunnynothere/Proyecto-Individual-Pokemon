@@ -105,7 +105,7 @@
 .selected {
     display: flex;
     justify-content: center;
-    align-items: start;
+    align-items: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
     min-width: 60px;

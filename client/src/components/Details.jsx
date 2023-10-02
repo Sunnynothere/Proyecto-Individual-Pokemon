@@ -21,7 +21,7 @@ const Details = () => {
             <div className='container_details'>
                 {/* eslint-disable-next-line */}
                 <div className='img_detail'>
-                    <img src={detailsPokemon?.image} alt='image not found' className='image_detail'/>
+                    <img src={detailsPokemon?.image} alt='not found' className='image_detail'/>
                 </div>
 
                 <div className='detail_info'>

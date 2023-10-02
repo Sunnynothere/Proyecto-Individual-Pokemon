@@ -10,7 +10,7 @@ const Card = (pokemon) => {
             <div className='card'>
                 <div className='card_image'>
                     <img src={image}
-                    alt='image not found'
+                    alt='not found'
                     className='img_img' />
                 </div>
                 <div className='card_info'>
