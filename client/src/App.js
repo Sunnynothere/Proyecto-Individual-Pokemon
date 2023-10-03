@@ -6,7 +6,7 @@ import Form from './components/Form';
 import Home from './components/Home';
 import Details from './components/Details';
 import axios from 'axios';
-axios.defaults.baseURL = 'https://server-pokemon-8qcu.onrender.com/api';
+axios.defaults.baseURL = 'https://server-pokemon-8qcu.onrender.com';
 
 function App() {
   return (
