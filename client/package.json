@@ -40,6 +40,10 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
-    ]
+    ],
+    "proxy": {
+      "/": "https://server-pokemon-8qcu.onrender.com/"
+    },
+    "referrerPolicy": "no-referrer-when-downgrade"    
   }
 }
