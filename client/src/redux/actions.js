@@ -9,11 +9,12 @@ export const FILTER_BY_API_DB = 'FILTER_BY_API_DB';
 export const ORDER_BY_NAME = 'ORDER_BY_NAME';
 export const ORDER_BY_ATTACK = 'ORDER_BY_ATTACK';
 export const POST_POKEMON = 'POST_POKEMON';
+export const baseUrl = 'https://server-pokemon-8qcu.onrender.com';
 
 export const allPokemon = () => {
     return async(dispatch) => {
         try{
-            const response = await axios.get(`/pokemon`);
+            const response = await axios.get(`${baseUrl}/pokemon`);
             const pokemon = response.data;
             dispatch({
                 type: ALL_POKEMON,
@@ -28,7 +29,7 @@ export const allPokemon = () => {
 export const getTypes = () => {
     return async(dispatch) => {
         try{
-            const response = await axios.get(`/types`);
+            const response = await axios.get(`${baseUrl}/types`);
             dispatch({
                 type: GET_TYPES, 
                 payload: response.data,
@@ -42,7 +43,7 @@ export const getTypes = () => {
 export const searchByName = (name) => {
     return async(dispatch) => {
         try{
-            const response = await axios.get(`/pokemon/${name}`);
+            const response = await axios.get(`${baseUrl}/pokemon/${name}`);
             dispatch({
                 type: SEARCH_BY_NAME,
                 payload: response.data,
@@ -56,7 +57,7 @@ export const searchByName = (name) => {
 export const getDetails = (id) => {
     return async(dispatch) => {
         try{
-            const response = await axios.get(`/pokemon/${id}`);
+            const response = await axios.get(`${baseUrl}/pokemon/${id}`);
             dispatch({
                 type: GET_DETAILS,
                 payload: response.data,
@@ -99,7 +100,7 @@ export const orderByAttack = (payload) => {
 export const postPokemon = (payload) => {
     return async (dispatch) => {
       try {
-        const response = await axios.post(`/pokemon`, payload);
+        const response = await axios.post(`${baseUrl}/pokemon`, payload);
         dispatch({
           type: POST_POKEMON,
           payload: response.data,
