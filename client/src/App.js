@@ -5,7 +5,8 @@ import Landing from './components/Landing';
 import Form from './components/Form';
 import Home from './components/Home';
 import Details from './components/Details';
-// import axios from 'axios';
+import axios from 'axios';
+axios.defaults.baseURL = 'pokemon-production-f907.up.railway.app';
 
 
 function App() {
