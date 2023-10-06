@@ -6,7 +6,7 @@ import Form from './components/Form';
 import Home from './components/Home';
 import Details from './components/Details';
 import axios from 'axios';
-axios.defaults.baseURL = 'pokemon-production-f907.up.railway.app';
+axios.defaults.baseURL = 'https://pokemon-backend-065c.onrender.com';
 
 
 function App() {
